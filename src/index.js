@@ -47,9 +47,7 @@ export default function useMailchimp({ url }) {
           status: STATUS_ERROR,
           message: err
         });
-      } else if (
-        isResponseIsError(response) !== 'success'
-      ) {
+      } else if (isResponseIsError(response)) {
         setState({
           status: STATUS_ERROR,
           message: response.msg
