@@ -1,0 +1,35 @@
+{
+  "name": "react-use-mailchimp",
+  "version": "0.2.1",
+  "main": "dist/react-hooks-lib.js",
+  "umd:main": "dist/react-hooks-lib.umd.js",
+  "module": "dist/react-hooks-lib.m.js",
+  "source": "src/index.js",
+  "license": "MIT",
+  "dependencies": {
+    "jsonp": "0.2.1",
+    "to-querystring": "1.1.0"
+  },
+  "peerDependencies": {
+    "react": "^16.8.6"
+  },
+  "scripts": {
+    "build": "microbundle -o dist/ --sourcemap false --compress false",
+    "test": "jest --config=jest.config.js --watch"
+  },
+  "devDependencies": {
+    "@babel/core": "7.4.4",
+    "@babel/polyfill": "7.4.4",
+    "@babel/preset-env": "7.4.4",
+    "@babel/preset-react": "7.0.0",
+    "babel-jest": "24.8.0",
+    "jest": "24.8.0",
+    "jest-dom": "3.2.2",
+    "microbundle": "0.11.0",
+    "react": "16.9.0-alpha.0",
+    "react-dom": "16.9.0-alpha.0",
+    "react-hooks-testing-library": "0.5.0",
+    "react-test-renderer": "16.9.0-alpha.0",
+    "react-testing-library": "7.0.0"
+  }
+}
