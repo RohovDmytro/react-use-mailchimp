@@ -16,7 +16,8 @@
   },
   "scripts": {
     "build": "microbundle -o dist/ --sourcemap false --compress false",
-    "test": "jest --config=jest.config.js --watch"
+    "test": "jest --config=jest.config.js --watch",
+    "publish": "np"
   },
   "devDependencies": {
     "@babel/core": "7.4.4",
