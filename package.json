@@ -1,6 +1,7 @@
 {
   "name": "react-use-mailchimp",
   "version": "0.4.0",
+  "repository": "r4real/react-use-mailchimp",
   "main": "dist/react-hooks-lib.js",
   "umd:main": "dist/react-hooks-lib.umd.js",
   "module": "dist/react-hooks-lib.m.js",
