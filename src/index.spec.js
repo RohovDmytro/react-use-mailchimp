@@ -3,7 +3,6 @@ import {
   renderHook,
   act
 } from 'react-hooks-testing-library';
-import {} from 'react-test-renderer';
 import { render } from 'react-testing-library';
 import 'react-testing-library/cleanup-after-each';
 import useMailchimp from '../src/index';
@@ -18,21 +17,24 @@ test('useMailchimp', async () => {
     useMailchimp({ url: URL })
   );
 
-  expect(result.current[0].status).toBe('YO');
+  expect(result.current[0].loading).toBe(false);
+  expect(result.current[0].error).toBe(null);
+  expect(result.current[0].data).toBe(null);
+
   act(() =>
     result.current[1]({
       EMAIL: EMAIL,
       NAME: ''
     })
   );
-  expect(result.current[0].status).toBe('LOADING');
+  expect(result.current[0].loading).toBe(true);
 
   await act(async () => {
     await waitForNextUpdate();
   });
-  expect(result.current[0].status).toBe('ERROR');
+  expect(result.current[0].error).toBeDefined();
   act(() => {
     result.current[2]();
   });
-  expect(result.current[0].status).toBe('YO');
+  expect(result.current[0].loading).toBe(false);
 });

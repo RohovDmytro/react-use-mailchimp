@@ -1,12 +1,6 @@
 import jsonp from 'jsonp';
 import { useState } from 'react';
 import toQueryString from 'to-querystring';
-import {
-  STATUS_INITIAL,
-  STATUS_SUCCESS,
-  STATUS_ERROR,
-  STATUS_LOADING
-} from './constants.json';
 
 const postFormData = data => {
   return 'TODO';
@@ -20,8 +14,9 @@ const isResponseIsError = response =>
   response.result !== 'success';
 
 const getDefaultState = () => ({
-  status: STATUS_INITIAL,
-  message: null
+  error: null,
+  loading: false,
+  data: null
 });
 
 export default function useMailchimp({ url }) {
@@ -34,30 +29,39 @@ export default function useMailchimp({ url }) {
   const subscribe = data => {
     const params = toQueryString(data);
     const requestURL = getURL(url) + '&' + params;
-    setState({
-      ...state,
-      status: STATUS_LOADING
-    });
     const requestOpts = {
-      param: 'c'
+      param: 'c',
+      timeout: 4000
     };
-    const process = (err, response) => {
-      if (err) {
+
+    setState({
+      loading: true,
+      error: null,
+      data: null
+    });
+
+    const process = (error, response) => {
+      if (error) {
         setState({
-          status: STATUS_ERROR,
-          message: err
+          loading: false,
+          error,
+          data: response
         });
-      } else if (isResponseIsError(response)) {
-        setState({
-          status: STATUS_ERROR,
-          message: response.msg
-        });
-      } else {
-        setState({
-          status: STATUS_SUCCESS,
-          message: response.msg
-        });
+        return;
       }
+      if (isResponseIsError(response)) {
+        setState({
+          loading: false,
+          error: new Error(response.msg),
+          data: response
+        });
+        return;
+      }
+      setState({
+        loading: false,
+        error: null,
+        data: response
+      });
     };
 
     jsonp(requestURL, requestOpts, process);
