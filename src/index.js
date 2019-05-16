@@ -54,7 +54,7 @@ export default function useMailchimp({ url }) {
         });
       } else {
         setState({
-          status: STATUS_SUCCES,
+          status: STATUS_SUCCESS,
           message: response.msg
         });
       }
