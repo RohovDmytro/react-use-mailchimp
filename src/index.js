@@ -2,12 +2,6 @@ import jsonp from 'jsonp';
 import { useState } from 'react';
 import toQueryString from 'to-querystring';
 
-const postFormData = data => {
-  return 'TODO';
-};
-
-const BASE_URL = `https://<dc>.api.mailchimp.com/3.0`;
-
 const getURL = url => url.replace('/post?', '/post-json?');
 
 const isResponseIsError = response =>

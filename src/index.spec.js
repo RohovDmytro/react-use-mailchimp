@@ -20,7 +20,6 @@ test('useMailchimp', async () => {
   expect(result.current[0].loading).toBe(false);
   expect(result.current[0].error).toBe(null);
   expect(result.current[0].data).toBe(null);
-
   act(() =>
     result.current[1]({
       EMAIL: EMAIL,
@@ -28,7 +27,6 @@ test('useMailchimp', async () => {
     })
   );
   expect(result.current[0].loading).toBe(true);
-
   await act(async () => {
     await waitForNextUpdate();
   });
