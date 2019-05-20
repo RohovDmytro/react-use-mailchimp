@@ -1,9 +1,7 @@
-import React from 'react';
 import {
-  renderHook,
-  act
+  act,
+  renderHook
 } from 'react-hooks-testing-library';
-import { render } from 'react-testing-library';
 import 'react-testing-library/cleanup-after-each';
 import useMailchimp from '../src/index';
 
