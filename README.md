@@ -26,3 +26,11 @@ const Component = () => {
   );
 };
 ```
+
+### How to get a `url`
+
+Check out your Mailchimp account. There you should look for a code to embed into a page. There you can find a url which will look something like:
+
+```
+https://<DOMAIN>.<DATA_CENTER>.list-manage.com/subscribe/post?u=<U>&amp;id=<ID>
+```
